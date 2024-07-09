@@ -12,7 +12,7 @@
             @foreach ($posts as $post)
                 <li class="grid xl:grid-cols-2 gap-4">
                     <div class="flex justify-center xl:justify-normal">
-                        <img class="aspect-[16/9] object-cover object-center w-full" src="{{ $post->image_path }}"
+                        <img class="aspect-[16/9] object-cover object-center w-full" src="{{ $post->image }}"
                             alt="{{ $post->titulo }}">
                     </div>
                     <div>
@@ -36,7 +36,7 @@
 
                         <div class="flex justify-center xl:justify-end mt-4">
                             <a class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                                href="{{ route('admin.posts.create') }}">
+                                href="{{ route('admin.posts.edit', $post) }}">
                                 Editar
                             </a>
                         </div>
