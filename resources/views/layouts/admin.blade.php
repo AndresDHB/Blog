@@ -54,6 +54,6 @@
                 Swal.fire(@json(session('sweet')));
             </script>
         @endif
+        @stack('js')
 </body>
-
 </html>

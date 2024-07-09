@@ -1,6 +1,6 @@
 <x-admin-layout>
     <div>
-        <h2 class="text-3xl text-gray-600 text-center mb-4">Agregar Categorias</h2>
+        <h1 class="text-3xl text-gray-600 text-center mb-4">Agregar Categorias</h1>
     </div>
     <div>
         <x-validation-errors />

@@ -13,7 +13,14 @@
             'icon' => 'fa-brands fa-stack-overflow',
             'active' => request()->routeIs('admin.categories.*'),
         ],
+        [
+            'name' => 'Posts',
+            'url' => route('admin.posts.index'),
+            'icon' => 'fa-solid fa-book',
+            'active' => request()->routeIs('admin.posts.*'),
+        ],
 ];
+
 
 @endphp
 

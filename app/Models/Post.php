@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
+use App\Observers\PostObserve;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 
+#[ObservedBy([PostObserve::class])]
 class Post extends Model
 {
     use HasFactory;
+
+    protected $casts = ["publicado_at" => "date"];
 
     protected $fillable = [
         'titulo',

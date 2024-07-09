@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,18 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
+        $publicado = $this->faker->boolean(); // 0 o 1 aleatorio
+
         return [
-            //
+            'titulo' => $this->faker->word(),
+            'slug' => $this->faker->slug(), // Generamos un slug a partir del título
+            'cuerpo' => $this->faker->paragraphs(3, true), // 3 párrafos de texto
+            'resumen' => $this->faker->text(400),
+            'image_path' => $this->faker->imageUrl(), // URL de imagen aleatoria
+            'publicado' => $publicado,
+            'category_id' => $this->faker->numberBetween(1, 5),
+            'user_id' => 1, 
+            'publicado_at' => $publicado ? Carbon::now() : null, // Fecha solo si publicado
         ];
     }
 }
