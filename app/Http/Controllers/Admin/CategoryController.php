@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -86,8 +87,30 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        //
+        $posts = Post::where('category_id', $category->id)->exists();
+
+        if(!$posts){
+
+            $category->delete();
+
+            session()->flash('sweet',[
+                'icon' => 'success',
+                'title' => 'Eliminacion exitosa',
+                'text' => 'Se elimino la categoria exitosamente',
+            ]);
+
+        }else{
+
+            session()->flash('sweet',[
+                'icon' => 'error',
+                'title' => 'Ops',
+                'text' => 'No puedes eliminar esta categoria, puesto a que tiene posts asociados',
+            ]);
+
+        }
+
+        return redirect()->route('admin.categories.index');
     }
 }
