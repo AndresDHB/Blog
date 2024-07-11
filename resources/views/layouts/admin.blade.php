@@ -26,6 +26,8 @@
 
     <!-- Styles -->
     @livewireStyles
+
+    @stack('css')
 </head>
 
 <body class="font-sans antialiased sm:overflow-auto" :class="{ 'overflow-hidden': open }" x-data="{

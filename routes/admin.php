@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TagsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[AdminController::class, 'index'])->name('admin.index');
