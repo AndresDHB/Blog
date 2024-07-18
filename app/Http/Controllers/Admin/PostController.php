@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -66,7 +67,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        dd($request->all());
+        
         $request->validate([
             'titulo' => ['required'],
             'slug' => ['required', 'unique:posts,slug,' . $post->id],
@@ -75,11 +76,31 @@ class PostController extends Controller
             'cuerpo' => $request->publicado ? 'required' : 'nullable',
             'tags' => $request->publicado ? 'required' : 'nullable', 'array',
             'publicado' => ['required', 'boolean'],
+            'image' => ['required', 'image']
         ]);
+
+        $data = $request->all();
+
+        if($request->file('image')){
+
+            if($post->image_path){
+
+                Storage::delete($post->image_path);
+
+            }
+
+            $nombreImage = 'imagen_post_id_'.$post->id.'.'.$request->file('image')->getClientOriginalExtension();
+
+            $data['image_path'] = Storage::putFileAs('posts',$request->file('image'), $nombreImage, 'public');
+            
+        }
 
         if ($request->publicado) {
             $post->tags()->sync($request->tags);
         }
+
+        $post->update($data);
+
         session()->flash('sweet', [
             'icon' => 'success',
             'title' => 'Actualizacio exitosa',

@@ -13,7 +13,7 @@
             @method('PUT')
             <div class="mb-6 relative">
                 <figure>
-                    <img class="aspect-[16/9] object-cover object-center w-full" src="{{ $post->image_path }}"
+                    <img class="aspect-[16/9] object-cover object-center w-full" src="{{ $post->image }}"
                         alt="{{ $post->titulo }}" id="imgPreview">
                 </figure>
 

@@ -1,0 +1,7 @@
+DO_ACCESS_KEY_ID=DO00RBJWCLZN3YECTRNW
+DO_SECRET_ACCESS_KEY=kUEge8TNI7dj4+9Co5Vkwx1OKCFrh20ejF485JOI00k
+DO_DEFAULT_REGION=nyc3
+DO_BUCKET=blog-laravel
+DO_ENDPOINT=https://nyc3.digitaloceanspaces.com
+DO_USE_PATH_STYLE_ENDPOINT=false
+DO_URL=https://blog-laravel.nyc3.digitaloceanspaces.com
